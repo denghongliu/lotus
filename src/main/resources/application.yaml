@@ -5,9 +5,16 @@ server:
   #servlet:
     #context-path: /kuang
 spring:
-  web:
-    resources:
-      static-locations: /static
+#  web:
+#    resources:
+#      static-locations: /static
+  #数据库链接
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/lotus
+    username: root
+    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
 
   #关闭缓存
   thymeleaf:
@@ -16,3 +23,4 @@ spring:
   #配置i18n文件
   messages:
     basename: i18n.login
+

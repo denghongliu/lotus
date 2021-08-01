@@ -4,12 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
-import org.thymeleaf.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
 
 /**
  * @author ：liudenghong
@@ -24,6 +21,14 @@ public class UsingStaticController extends WebMvcConfigurationSupport {
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
+
+    @Override
+    protected void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("login");
+        registry.addViewController("/index.html").setViewName("login");
+        registry.addViewController("/main.html").setViewName("content/index");
+    }
+
     @Bean
     public LocaleResolver localeResolver() {
         return new MyLocaleResolver();

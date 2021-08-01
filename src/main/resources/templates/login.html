@@ -30,12 +30,14 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="post" action="login" class="form-validate" id="loginFrom">
+                  <form method="get" action="/home" class="form-validate" id="loginFrom">
                     <div class="form-group">
                       <input id="login-username" type="text" name="userName" required data-msg="请输入用户名"  th:placeholder="#{login.username}" value="" class="input-material">
                     </div>
                     <div class="form-group">
                       <input id="login-password" type="password" name="passWord" required data-msg="请输入密码"  th:placeholder="#{login.password}" class="input-material">
+                     <!--如果不等于空则显示 -->
+                      <span style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"> </span>
                     </div>
                     <button id="login" type="submit" class="btn btn-primary">[[#{login.btn}]]</button>
                     <div style="margin-top: -40px;"> 
